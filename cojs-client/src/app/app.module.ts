@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ProblemListComponent } from './components/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './components/problem-detail/problem-detail.component';
 import { NewProblemComponent } from './components/new-problem/new-problem.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NewProblemComponent } from './components/new-problem/new-problem.compon
     ProblemListComponent,
     ProblemDetailComponent,
     NewProblemComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, routing, FormsModule, ReactiveFormsModule],
   providers: [DataService],
