@@ -2,6 +2,7 @@ const dotenv = require('dotenv')
 const colors = require('colors')
 const express = require('express')
 const app = express()
+const restRouter = require('./routes/rest')
 
 dotenv.config()
 
@@ -11,6 +12,8 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('app is running')
 })
+
+app.use('/api/v1/', restRouter)
 
 const PORT = process.env.PORT || 5000
 
