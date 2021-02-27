@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Problem } from '../../models/problem.model';
 import { DataService } from './../../services/data.service';
-
 @Component({
   selector: 'app-problem-detail',
   templateUrl: './problem-detail.component.html',

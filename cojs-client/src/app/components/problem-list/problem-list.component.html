@@ -1,4 +1,5 @@
 <div class="container">
+  <app-new-problem></app-new-problem>
   <div class="list-group">
     <a
       class="list-group-item"
@@ -7,13 +8,15 @@
     >
       <span
         class="{{
-          'pull-left badge difficulty diff-' +
+          'float-left badge difficulty diff-' +
             problem.difficulty.toLocaleLowerCase()
         }}"
       >
         {{ problem.difficulty }}
       </span>
-      <strong class="title">{{ problem.id }}. {{ problem.title }}</strong>
+      <strong class="title" style="color: black"
+        >{{ problem.id }}. {{ problem.title }}</strong
+      >
     </a>
   </div>
 </div>

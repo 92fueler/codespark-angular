@@ -6,6 +6,8 @@ import { PROBLEMS } from './../mock-data';
   providedIn: 'root',
 })
 export class DataService {
+  problems: Problem[] = PROBLEMS;
+
   constructor() {}
 
   getProblems(): Problem[] {
@@ -13,6 +15,11 @@ export class DataService {
   }
 
   getProblem(id: number): Problem | undefined {
-    return PROBLEMS.find((problem) => problem.id === id);
+    return this.problems.find((problem) => problem.id === id);
+  }
+
+  addProblem(problem: Problem): void {
+    problem.id = this.problems.length + 1;
+    this.problems.push(problem);
   }
 }

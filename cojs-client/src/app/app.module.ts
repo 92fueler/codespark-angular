@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.route';
 
 import { DataService } from './services/data.service';
@@ -8,10 +8,16 @@ import { DataService } from './services/data.service';
 import { AppComponent } from './app.component';
 import { ProblemListComponent } from './components/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './components/problem-detail/problem-detail.component';
+import { NewProblemComponent } from './components/new-problem/new-problem.component';
 
 @NgModule({
-  declarations: [AppComponent, ProblemListComponent, ProblemDetailComponent],
-  imports: [BrowserModule, routing],
+  declarations: [
+    AppComponent,
+    ProblemListComponent,
+    ProblemDetailComponent,
+    NewProblemComponent,
+  ],
+  imports: [BrowserModule, routing, FormsModule, ReactiveFormsModule],
   providers: [DataService],
   bootstrap: [AppComponent],
 })
