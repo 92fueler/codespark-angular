@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Problem } from '../../models/problem.model';
-import { DataService } from './../../services/data.service';
+import { DataService } from '../../services/data.service';
 
 const DEFAULT_PROBLEM: Problem = Object.freeze({
   id: 0,

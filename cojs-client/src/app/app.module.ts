@@ -1,9 +1,8 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { routing } from './app.route';
-
-import { DataService } from './services/data.service';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ProblemListComponent } from './components/problem-list/problem-list.component';
@@ -19,8 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NewProblemComponent,
     NavbarComponent,
   ],
-  imports: [BrowserModule, routing, FormsModule, ReactiveFormsModule],
-  providers: [DataService],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
