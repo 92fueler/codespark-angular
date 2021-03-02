@@ -3,19 +3,23 @@ const colors = require('colors')
 const connectDB = require('./config/db.js')
 const express = require('express')
 const app = express()
-const restRouter = require('./routes/rest')
+const path = require('path')
+const restRouter = require('./routes/rest.js')
+const indexRouter = require('./routes/index.js')
 
 dotenv.config()
 connectDB()
 
+app.use(express.static(path.join(__dirname, '../public')))
 // parse the incoming request object as a JSON object
 app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send('app is running')
-})
-
+app.use('/', indexRouter)
 app.use('/api/v1/', restRouter)
+
+app.use('/', function (req, res) {
+  res.sendFile('index.html', { root: path.join(__dirname, '../public') })
+})
 
 const PORT = process.env.PORT || 5000
 

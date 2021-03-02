@@ -1,5 +1,5 @@
 <div class="container">
-  <app-new-problem></app-new-problem>
+  <app-new-problem (addProblem)="addProblem($event)"></app-new-problem>
   <div class="list-group">
     <a
       class="list-group-item"
@@ -8,8 +8,7 @@
     >
       <span
         class="{{
-          'float-left badge difficulty diff-' +
-            problem.difficulty.toLocaleLowerCase()
+          'float-left badge difficulty diff-' + problem.difficulty.toLowerCase()
         }}"
       >
         {{ problem.difficulty }}

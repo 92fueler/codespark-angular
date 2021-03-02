@@ -1,22 +1,25 @@
-import { DataService } from '../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Problem } from '../../models/problem.model';
-
+import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-problem-list',
   templateUrl: './problem-list.component.html',
   styleUrls: ['./problem-list.component.css'],
 })
 export class ProblemListComponent implements OnInit {
-  problems!: Problem[];
+  public problems: Problem[];
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    this.getProblems();
+  ngOnInit() {
+    this.dataService
+      .getProblems()
+      .subscribe((problems) => (this.problems = problems));
   }
 
-  getProblems(): void {
-    this.problems = this.dataService.getProblems();
+  addProblem(problem: Problem) {
+    this.dataService.addProblem(problem).subscribe((problem) => {
+      this.problems.push(problem);
+    });
   }
 }

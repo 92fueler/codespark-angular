@@ -8,7 +8,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./problem-detail.component.css'],
 })
 export class ProblemDetailComponent implements OnInit {
-  problem: Problem | undefined;
+  problem: Problem;
 
   constructor(
     private dataService: DataService,
@@ -16,8 +16,14 @@ export class ProblemDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getProblem();
+  }
+
+  getProblem() {
     this.route.params.subscribe((params) => {
-      this.problem = this.dataService.getProblem(+params['id']);
+      this.dataService
+        .getProblem(+params['id'])
+        .subscribe((problem) => (this.problem = problem));
     });
   }
 }
