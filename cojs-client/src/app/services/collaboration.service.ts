@@ -17,6 +17,7 @@ export class CollaborationService {
       query: 'sessionId=' + sessionId,
     });
 
+    // listen on changes from server
     this.collaborationSocket.on('change', (delta: string) => {
       console.log('collaboration: editor changes by ' + delta);
       delta = JSON.parse(delta);

@@ -10,7 +10,7 @@ const indexRouter = require('./routes/index.js')
 
 const socket_io = require('socket.io')
 const io = socket_io()
-const socketController = require('./controllers/socketController.js')
+const socketController = require('./controllers/socketController.js')(io)
 
 dotenv.config()
 connectDB()
@@ -49,5 +49,5 @@ function onError(error) {
 function onListening() {
   var addr = server.address()
   var bind = typeof addr == 'string' ? 'pipe ' + addr : 'port ' + addr.port
-  console.log('Listening on ' + bind)
+  console.log(`app is listening on ${bind}`.brightYellow)
 }

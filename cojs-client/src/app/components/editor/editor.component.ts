@@ -1,5 +1,5 @@
 import { CollaborationService } from './../../services/collaboration.service';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from './../../services/data.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import * as ace from 'ace-builds';
@@ -11,13 +11,10 @@ import * as ace from 'ace-builds';
 })
 export class EditorComponent implements OnInit {
   editor: any;
-
   public languages: string[] = ['Java', 'Python'];
   language: string = 'Java'; // default
-
   sessionId: string;
-
-  output: string;
+  output: string = '';
 
   defaultContent = {
     Java: `public class Solution {
@@ -37,10 +34,14 @@ export class EditorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // use problem id as sessionId
+    // since we subscribe the changes, every time the params changes
+    // sessionId will be updated and the editor will be initialized
     this.route.params.subscribe((params) => {
       this.sessionId = params['id'];
       this.initEditor();
     });
+    this.collaboration.restoreBuffer();
   }
 
   initEditor() {
@@ -51,14 +52,15 @@ export class EditorComponent implements OnInit {
     );
     this.editor = ace.edit('editor');
     this.editor.setTheme('ace/theme/eclipse');
-    this.resetEditor();
     this.editor.$blockScrolling = Infinity;
 
+    this.resetEditor();
     document.getElementsByTagName('textarea')[0].focus();
-
+    // setup collaboration socket
     this.collaboration.init(this.editor, this.sessionId);
     this.editor.lastAppliedChange = null;
 
+    // register a change callback
     this.editor.on('change', (e) => {
       console.log('editor changes: ' + JSON.stringify(e));
       if (this.editor.lastAppliedChange != e) {
