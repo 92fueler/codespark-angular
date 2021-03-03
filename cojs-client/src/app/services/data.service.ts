@@ -38,6 +38,10 @@ export class DataService {
       .pipe(catchError(this.handleError));
   }
 
+  buildAndRun(): void {
+    console.log('build and run');
+  }
+
   // error hanlder
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
