@@ -3,7 +3,7 @@
   <div class="list-group">
     <a
       class="list-group-item"
-      *ngFor="let problem of problems"
+      *ngFor="let problem of problems | search: searchTerm"
       [routerLink]="['/problems', problem.id]"
     >
       <span

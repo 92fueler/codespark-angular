@@ -1,6 +1,8 @@
+import { SearchPipe } from './pipe/search.pipe';
+import { InputService } from './services/input.service';
 import { CollaborationService } from './services/collaboration.service';
 import { DataService } from './services/data.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,9 +23,16 @@ import { EditorComponent } from './components/editor/editor.component';
     NewProblemComponent,
     NavbarComponent,
     EditorComponent,
+    SearchPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [DataService, CollaborationService],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [DataService, CollaborationService, InputService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

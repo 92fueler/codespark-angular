@@ -56,6 +56,7 @@ export class EditorComponent implements OnInit {
 
     this.resetEditor();
     document.getElementsByTagName('textarea')[0].focus();
+
     // setup collaboration socket
     this.collaboration.init(this.editor, this.sessionId);
     this.editor.lastAppliedChange = null;

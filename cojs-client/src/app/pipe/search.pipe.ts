@@ -13,12 +13,6 @@ export class SearchPipe implements PipeTransform {
    */
   transform(problems: Problem[], searchTerm: string): Problem[] {
     console.log('this is ', problems);
-    if (!problems) {
-      return [];
-    }
-    if (!searchTerm) {
-      return [];
-    }
 
     searchTerm = searchTerm.toLowerCase();
     // console.log(searchTerm);
